@@ -1,0 +1,30 @@
+from PIL import Image, ImageDraw ,ImageFont
+
+# 创建一个新的图像对象，大小为400x400像素，背景色为白色
+img = Image.new('RGB', (2880, 2880), color='black')
+
+# 创建一个绘图对象
+draw = ImageDraw.Draw(img)
+
+# 绘制第一个圆，圆心在(100, 100)，半径为50，颜色为红色
+draw.ellipse((1032, 1032, 1840, 1840),outline='green' ,width=3)
+
+# 绘制第二个圆，中心在(300, 300)，半径为50，颜色为蓝色
+draw.ellipse((152, 152, 2728, 2728),outline='green' ,width=3)
+
+# 绘制点A区
+draw.point((1240, 1440), fill=(0, 44, 0))
+draw.point((1640, 1440), fill=(0, 64, 0))
+
+# 绘制一个B区正方形，左上角在(150, 150)，右下角在(250, 250)，颜色为绿色
+draw.rectangle((592, 1440, 596, 1444), fill=(0, 80, 0))
+
+# 加载字体文件，设置字体大小为40
+font = ImageFont.truetype("arial.ttf", 20)
+
+# 在图像上写入文字，位置为(50, 50)，文字为"Hello", 颜色为黑色
+draw.text((50, 50), "3.2 Draw by Thunder", font=font, fill=(0, 255, 0))
+
+# 保存图像为BMP格式
+img.save('output.bmp')
+img.show()

@@ -1,0 +1,59 @@
+#寻找模组点位置
+import tkinter as tk
+import math
+from tkinter import simpledialog
+#输入pixel大小 
+def get_input():
+    root = tk.Tk()
+    root.withdraw()
+    input_value = simpledialog.askstring("pixel", "请输入pixel大小um*3")
+    root.destroy()
+    return input_value
+ 
+pixel_pitch = float(get_input())
+
+#输入分辨率大小x
+def get_input():
+    root = tk.Tk()
+    root.withdraw()
+    input_value = simpledialog.askstring("分辨率x", "请输入分辨率大小x")
+    root.destroy()
+    return input_value
+ 
+pixel_nox =float(get_input())
+
+#输入分辨率大小y
+def get_input():
+    root = tk.Tk()
+    root.withdraw()
+    input_value = simpledialog.askstring("分辨率y", "请输入分辨率大小y")
+    root.destroy()
+    return input_value
+ 
+pixel_noy = float(get_input())
+
+
+#输入所需尺寸
+def get_input():
+    root = tk.Tk()
+    root.withdraw()
+    input_value = simpledialog.askstring("所需尺寸", "请输入所需尺寸mm")
+    root.destroy()
+    return input_value
+ 
+need_size = float(get_input())
+
+need_pixel=need_size/pixel_pitch*1000
+#need_pixel=math.ceil(need_pixel)
+leftupx=(pixel_nox-need_pixel)/2
+leftupy=(pixel_noy-need_pixel)/2
+rightdownx=(pixel_nox+need_pixel)/2
+rightdowny=(pixel_noy+need_pixel)/2
+
+leftupx=math.ceil(leftupx)
+leftupy=math.ceil(leftupy)
+rightdownx=math.ceil(rightdownx)
+rightdowny=math.ceil(rightdowny)
+
+print("你输入的是" ,pixel_pitch,pixel_nox,pixel_noy,need_size)
+print("左上的坐标点是(" ,leftupx,leftupy,"),右下的坐标点是",rightdownx,rightdowny,")")
